@@ -1,0 +1,135 @@
+@import "sass/cssstart";
+@import "sass/mixins";
+@import "sass/typography";
+
+$green: #1c784a;
+$greenLighter: rgba(28, 120, 74, 0.5);
+$neonGreen: #bcf54c;
+$yellow: #F2F230;
+$earthToneYellow: #FFD97D;
+$blueGreen: #61F2C2;
+$blue: #30F2F2;
+$white: #FFF;
+
+/* * * * BASICS * * * */
+
+body{
+    background-color: $blueGreen;
+    text-align: center;
+}
+
+h1{
+    text-shadow: 0 0 20px $neonGreen, 0 1px 1px $yellow;
+}
+
+footer{
+    background-color: $green;
+    color: $white;
+    padding: 5px;
+}
+
+.wrapper, .content-wrapper{
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* * * * QUIZ BOX * * * */
+
+.container, form, .dogBreedResult{
+    @include flexy(flex, row wrap, center, center);
+    width: 100%;
+}
+
+.quizContainer{
+    background-color: $blueGreen;
+}
+
+h2{
+    width: 100%;
+    color: $white;
+    background-color: $green;
+}
+
+/* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
+form.quizChoicesOne, .dogBreedResult{
+  	position: relative;
+    box-shadow: 0 1px 5px $neonGreen;
+}
+
+form.quizChoicesOne::before, form.quizChoicesOne::after, .dogBreedResult::before, .dogBreedResult::after{
+	content: "";
+    position: absolute;
+    z-index: -1;
+    box-shadow: 0 0 20px $neonGreen;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    border-radius: 100px / 10px;
+}
+
+form.quizChoicesOne::after, .dogBreedResult::after{
+	right: 10px;
+    left: auto;
+    transform:skew(8deg) rotate(20deg);
+} /* * * * END OF BOX SHADOW EFFECT * * * */
+
+label.answer{
+    width: 50%;
+    // padding: 2%;
+}
+
+label.answer [type=radio] + img {
+    cursor: pointer;
+}
+
+label.answer input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+label.answer input[type="radio"]:checked + img{
+    border: 2px groove $neonGreen;
+}
+
+/* * * * QUIZ * * * */
+
+.quizContainerTwo, .quizContainerThree, .quizContainerFour, .results{
+    display: none;
+}
+
+/* * * * BUTTONS * * * */
+.controls{
+    @include flexy(flex, row wrap, space-between, center);
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.controls button.firstNext{
+    width: 100%;
+}
+
+.controls button{
+    width: 50%;
+    padding: 2% 0;
+    background-color: $green;
+    border: none;
+    color: $white;
+
+    &:hover {
+    background: $neonGreen radial-gradient(circle, transparent 1%, $neonGreen 1%) center/15000%;
+    color: $green;
+    }
+    
+    &:active {
+        background-color: $neonGreen;
+        background-size: 100%;
+        transition: background 0s;
+        color: $green;
+    }
+}
+
+button:focus-within{
+    box-shadow: inset 0 1px 10px $earthToneYellow;
+}
