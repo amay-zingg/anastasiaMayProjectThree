@@ -4,28 +4,24 @@ $(document).ready(function () {
     // * * * * DOG BREEDS DATA
     const dogBreedsResult = [
         {
-            id: 'goldenRetriever',
-            score: 0,
-            img: '../assets/noemi-macavei-katocz-c7bUIRBqapA-unsplash.jpg',
-            result: "You are a Golden" 
+            id: 'Golden Retriever',
+            img: './assets/goldenRetriever.jpg',
+            result: "You make an excellent companion and bring laughter and joy to anyone and everyone!" 
         },
         {
-            id: 'beagle',
-            score: 0,
-            img: '../assets/noemi-macavei-katocz-c7bUIRBqapA-unsplash.jpg',
-            result: "You are a Beagle"
+            id: 'Beagle',
+            img: './assets/beagle.jpg',
+            result: "You're curious, clever and energetic!"
         },
         {
-            id: 'dachshund',
-            score: 0,
-            img: '../assets/noemi-macavei-katocz-c7bUIRBqapA-unsplash.jpg',
-            result: "You are a Dachshund"
+            id: 'Dachshund',
+            img: './assets/dachshund.jpg',
+            result: "You are strong-willed, energetic and entertaining!"
         },
         {
-            id: 'pug',
-            score: 0,
-            img: '../assets/noemi-macavei-katocz-c7bUIRBqapA-unsplash.jpg',
-            result: "You are a Pug"
+            id: 'Pug',
+            img: './assets/pug.jpg',
+            result: "You're a lot of dog in a small space!"
         },
     ];
 
@@ -36,18 +32,12 @@ $(document).ready(function () {
 
     // * * * * ARRAY TO CAPTURE USER INPUT
 
-    // let goldenRetriever = 0;
-    // let beagle = 0;
-    // let pug = 0;
-    // let dachshund = 0;
-    
     let results = [];
 
     // * * * * LOOP THROUGH QUESTIONS - QUESTION ONE
     $('button.firstNext').click(function () {
 
-        const value = $('input:radio[name=firstAnswer]:checked').val();
-        // console.log(parseFloat(value));    
+        const value = $('input:radio[name=firstAnswer]:checked').val();  
         
         if ($("input:radio[name=firstAnswer]:checked").length === 0) {
             alert("You must pick one!");
@@ -58,10 +48,9 @@ $(document).ready(function () {
         // } 
         //not sure how to make this not reload to next question block
 
-
         //.pop() to make last answer disappear if previous question has a new/different value
 
-        console.log(value);
+        // console.log(value);
 
         // * * * * RESULTS ARRAY
         results.push(parseFloat(value));
@@ -71,10 +60,8 @@ $(document).ready(function () {
     // * * * * LOOP THROUGH QUESTIONS - QUESTION TWO
     $("button.secondNext").click(function () {
         const value2 = $("input:radio[name=secondAnswer]:checked").val();
-        // console.log(value2);
 
         // * * * * RESULTS ARRAY
-        // let totalResult = [];
         results.push(parseFloat(value2));
         console.log(results);
     });
@@ -82,10 +69,8 @@ $(document).ready(function () {
     // * * * * LOOP THROUGH QUESTIONS - QUESTION THREE
     $("button.thirdNext").click(function () {
         const value3 = $("input:radio[name=thirdAnswer]:checked").val();
-        // console.log(value3);
 
         // * * * * RESULTS ARRAY
-        // let totalResult = [];
         results.push(parseFloat(value3));
         console.log(results);
     });
@@ -93,7 +78,6 @@ $(document).ready(function () {
     // * * * * LOOP THROUGH QUESTIONS - QUESTION FOUR
     $("button.result").click(function () {
         const value4 = $("input:radio[name=fourthAnswer]:checked").val();
-        // console.log(value4);
 
         // * * * * RESULTS ARRAY
         results.push(parseFloat(value4));
@@ -102,25 +86,46 @@ $(document).ready(function () {
         // * * * * ON CLICK OF RESULT OPEN RESULTS CONTAINER
         $('.quizContainerFour').hide();
         $(".dogBreedResult").fadeIn(1000);
-        // function makeTotalArray() {
-        // };
-
-        // makeTotalArray();
-
-
-
+        
         // * * * * MAKE 'RESULTS' ARRAY ALL ONE SUM
 
-        let sumOfNumbers = results.reduce((acc, cur) => {
+        let totalResult = results.reduce((acc, cur) => {
             return acc + cur;
         });
 
-        console.log(sumOfNumbers);
+        console.log(totalResult);
 
+        // * * * * PICK DOG BREED BASED ON RESULTS
+
+        function showResult() {
+            if (totalResult >= 14, totalResult <= 16) {
+                $('div.dogBreedResult').html(
+                    $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[0].id}!</h3><img src="${dogBreedsResult[0].img}" alt="A guilty golden retriever | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[0].result}</p>`)
+                    );
+            };
+            if (totalResult >= 10, totalResult <= 12) {
+                $('div.dogBreedResult').html(
+                    $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[1].id}!</h3><img src="${dogBreedsResult[1].img}" alt="A guilty beagle | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[1].result}</p>`)
+                );
+            };
+            if(totalResult >= 6, totalResult <= 9) {
+                $('div.dogBreedResult').html(
+                    $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[2].id}!</h3><img src="${dogBreedsResult[2].img}" alt="A guilty dashchund | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[2].result}</p>`)
+                );
+            };
+            if (totalResult <= 5) {
+                $('div.dogBreedResult').html(
+                    $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[3].id}!</h3><img src="${dogBreedsResult[3].img}" alt="A guilty pug | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[3].result}</p>`)
+                );
+            };
+        };
+
+        showResult();
 
     });
     
-    // * * * * PICK DOG BREED BASED ON RESULTS
+    
+    
 
 
     // * * * * TO SELECT A PHOTO RADIO BUTTON

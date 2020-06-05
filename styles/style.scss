@@ -50,6 +50,16 @@ h2{
     background-color: $green;
 }
 
+.dogBreedResult{
+    background: $green;
+    color: $white;
+    margin-bottom: 5%;
+}
+
+.dogBreedResult img{
+    margin: 0 auto;
+}
+
 /* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
 form.quizChoicesOne, .dogBreedResult{
   	position: relative;
@@ -95,7 +105,7 @@ label.answer input[type="radio"]:checked + img{
 
 /* * * * QUIZ * * * */
 
-.quizContainerTwo, .quizContainerThree, .quizContainerFour, .results{
+.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult{
     display: none;
 }
 
