@@ -30,7 +30,7 @@ footer{
 
 .wrapper, .content-wrapper{
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 500px;
 }
 
 /* * * * QUIZ BOX * * * */
@@ -58,6 +58,12 @@ h2{
 
 .dogBreedResult img{
     margin: 0 auto;
+    max-height: 500px;
+}
+
+.dogBreedResult p{
+    padding: 2%;
+    margin: 0;
 }
 
 /* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
@@ -91,6 +97,10 @@ label.answer{
 
 label.answer [type=radio] + img {
     cursor: pointer;
+
+    &:hover{
+        border: 2px groove $blue;
+    }
 }
 
 label.answer input[type="radio"] {

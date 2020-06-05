@@ -283,8 +283,8 @@ h1 {
 }
 
 h2, h3 {
-  font-size: 40px;
-  line-height: 41px;
+  font-size: 30px;
+  line-height: 31px;
   margin: 0;
   padding: 2% 0;
   font-weight: bold;
@@ -314,7 +314,7 @@ footer {
 
 .wrapper, .content-wrapper {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 /* * * * QUIZ BOX * * * */
@@ -353,6 +353,12 @@ h2 {
 
 .dogBreedResult img {
   margin: 0 auto;
+  max-height: 500px;
+}
+
+.dogBreedResult p {
+  padding: 2%;
+  margin: 0;
 }
 
 /* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
@@ -389,6 +395,10 @@ label.answer {
 
 label.answer [type=radio] + img {
   cursor: pointer;
+}
+
+label.answer [type=radio] + img:hover {
+  border: 2px groove #30F2F2;
 }
 
 label.answer input[type="radio"] {
