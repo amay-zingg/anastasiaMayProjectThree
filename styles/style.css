@@ -435,12 +435,8 @@ label.answer input[type="radio"]:checked + img {
   margin-bottom: 5%;
 }
 
-.controls button.firstNext {
-  width: 100%;
-}
-
 .controls button {
-  width: 50%;
+  width: 100%;
   padding: 2% 0;
   background-color: #1c784a;
   border: none;
