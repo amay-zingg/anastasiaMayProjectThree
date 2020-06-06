@@ -160,7 +160,11 @@ $(document).ready(function () {
 
             // * * * * ON CLICK OF RESULT OPEN RESULTS CONTAINER
             $('.quizContainerFour').hide();
-            $(".dogBreedResult").fadeIn(1000);
+            $(".dogBreedResult").show();
+            $(".redoQuiz").fadeIn(2000);
+            $("input[type=reset]").on("click", function () {
+                window.location.reload()
+            });
 
             // * * * * MAKE 'RESULTS' ARRAY ALL ONE SUM
             let totalResult = results.reduce((acc, cur) => {
@@ -171,22 +175,22 @@ $(document).ready(function () {
             function showResult() {
                 if (totalResult >= 14, totalResult <= 16) {
                     $('div.dogBreedResult').html(
-                        $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[0].id}!</h3><img src="${dogBreedsResult[0].img}" alt="A guilty golden retriever | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[0].result}</p>`)
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[0].id}!</h3><img src="${dogBreedsResult[0].img}" alt="A guilty golden retriever | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[0].result}</p>`)
                     );
                 };
                 if (totalResult >= 10, totalResult <= 12) {
                     $('div.dogBreedResult').html(
-                        $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[1].id}!</h3><img src="${dogBreedsResult[1].img}" alt="A guilty beagle | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[1].result}</p>`)
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[1].id}!</h3><img src="${dogBreedsResult[1].img}" alt="A guilty beagle | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[1].result}</p>`)
                     );
                 };
                 if (totalResult >= 6, totalResult <= 9) {
                     $('div.dogBreedResult').html(
-                        $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[2].id}!</h3><img src="${dogBreedsResult[2].img}" alt="A guilty dashchund | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[2].result}</p>`)
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[2].id}!</h3><img src="${dogBreedsResult[2].img}" alt="A guilty dashchund | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[2].result}</p>`)
                     );
                 };
                 if (totalResult <= 5) {
                     $('div.dogBreedResult').html(
-                        $(`<h3 class="result">Congrats! You are a ${dogBreedsResult[3].id}!</h3><img src="${dogBreedsResult[3].img}" alt="A guilty pug | Photo from www.dogshaming.com" /><p class="result">${dogBreedsResult[3].result}</p>`)
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[3].id}!</h3><img src="${dogBreedsResult[3].img}" alt="A guilty pug | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[3].result}</p>`)
                     );
                 };
             };
@@ -200,5 +204,5 @@ $(document).ready(function () {
     $(function () {
         results.init();
     });
-        
+ 
     }); // * * * * END OF THE DOCUMENT READY

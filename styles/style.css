@@ -255,14 +255,12 @@ a {
 }
 
 body {
-  font-size: 30px;
-  line-height: 31px;
   font-family: "Ubuntu", sans-serif;
 }
 
 p {
-  font-size: 20px;
-  line-height: 21px;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: clamp(1.5rem, 3vw, 2.5rem)2px;
 }
 
 p a {
@@ -275,24 +273,24 @@ p a:hover, p a :active {
 }
 
 h1 {
-  font-size: 76px;
-  line-height: 77px;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: clamp(4rem, 9vw, 8rem)2px;
   font-family: "Knewave", cursive;
-  line-height: 85px;
+  line-height: clamp(5.5rem, 10vw, 10rem);
   margin: 3% 0;
 }
 
 h2, h3 {
-  font-size: 30px;
-  line-height: 31px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: clamp(2rem, 5vw, 3rem)2px;
   margin: 0;
   padding: 2% 0;
   font-weight: bold;
 }
 
-aside.controls button {
+.controls button, .redoQuiz button {
   font-size: 20px;
-  line-height: 21px;
+  line-height: 22px;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -300,21 +298,43 @@ aside.controls button {
 body {
   background-color: #61F2C2;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
 }
 
 h1 {
-  text-shadow: 0 0 20px #bcf54c, 0 1px 1px #F2F230;
+  text-shadow: 0 0 20px #bcf54c, 0 1px 1px #FFD97D;
 }
 
 footer {
   background-color: #1c784a;
   color: #FFF;
   padding: 5px;
+  height: 12%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 100%;
 }
 
 .wrapper, .content-wrapper {
   margin: 0 auto;
   max-width: 500px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.wrapper {
+  min-height: calc(100vh - 50vh);
 }
 
 /* * * * QUIZ BOX * * * */
@@ -398,7 +418,7 @@ label.answer [type=radio] + img {
 }
 
 label.answer [type=radio] + img:hover {
-  border: 2px groove #30F2F2;
+  border: 3px groove #FFD97D;
 }
 
 label.answer input[type="radio"] {
@@ -417,7 +437,7 @@ label.answer input[type="radio"]:checked + img {
 }
 
 /* * * * BUTTONS * * * */
-.controls {
+.controls, .redoQuiz {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -435,7 +455,7 @@ label.answer input[type="radio"]:checked + img {
   margin-bottom: 5%;
 }
 
-.controls button {
+.controls button, .redoQuiz button {
   width: 100%;
   padding: 2% 0;
   background-color: #1c784a;
@@ -443,12 +463,12 @@ label.answer input[type="radio"]:checked + img {
   color: #FFF;
 }
 
-.controls button:hover {
+.controls button:hover, .redoQuiz button:hover {
   background: #bcf54c radial-gradient(circle, transparent 1%, #bcf54c 1%) center/15000%;
   color: #1c784a;
 }
 
-.controls button:active {
+.controls button:active, .redoQuiz button:active {
   background-color: #bcf54c;
   background-size: 100%;
   -webkit-transition: background 0s;
@@ -459,4 +479,17 @@ label.answer input[type="radio"]:checked + img {
 button:focus-within {
   -webkit-box-shadow: inset 0 1px 10px #FFD97D;
           box-shadow: inset 0 1px 10px #FFD97D;
+}
+
+.redoQuiz {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .content-wrapper {
+    padding: 0 3%;
+  }
+  footer {
+    height: 10%;
+  }
 }

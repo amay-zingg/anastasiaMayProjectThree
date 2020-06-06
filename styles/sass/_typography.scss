@@ -4,12 +4,12 @@ $titleFont: 'Knewave', cursive;
 $bodyFont: 'Ubuntu', sans-serif; // * * * * ALSO HAS 500 WEIGHT ONE IN BOLD AND ITALIC    
 
 body{
-    @include fontSize(30px);
+    // @include fontSize(30px);
     font-family: $bodyFont;
 }
 
 p{
-    @include fontSize(20px);
+    @include fontSize(clamp(1.5rem, 3vw, 2.5rem));
 }
 
 p a{
@@ -22,20 +22,20 @@ p a{
 }
 
 h1{
-    @include fontSize(76px);
+    @include fontSize(clamp(4rem, 9vw, 8rem));
     font-family: $titleFont;
-    line-height: 85px;
+    line-height: clamp(5.5rem, 10vw, 10rem);
     margin: 3% 0;
 }
 
 h2, h3{
-    @include fontSize(30px);
+    @include fontSize(clamp(2rem, 5vw, 3rem));
     margin: 0;
     padding: 2% 0;
     font-weight: bold;
 }
 
-aside.controls button{
+.controls button, .redoQuiz button{
     @include fontSize(20px);
     font-family: $bodyFont;
 }

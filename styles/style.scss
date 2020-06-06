@@ -3,9 +3,7 @@
 @import "sass/typography";
 
 $green: #1c784a;
-$greenLighter: rgba(28, 120, 74, 0.5);
 $neonGreen: #bcf54c;
-$yellow: #F2F230;
 $earthToneYellow: #FFD97D;
 $blueGreen: #61F2C2;
 $blue: #30F2F2;
@@ -16,21 +14,33 @@ $white: #FFF;
 body{
     background-color: $blueGreen;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
 }
 
 h1{
-    text-shadow: 0 0 20px $neonGreen, 0 1px 1px $yellow;
+    text-shadow: 0 0 20px $neonGreen, 0 1px 1px $earthToneYellow;
 }
 
 footer{
     background-color: $green;
     color: $white;
     padding: 5px;
+    height: 12%;
+    flex-shrink: 0;
+    width: 100%;
 }
 
 .wrapper, .content-wrapper{
     margin: 0 auto;
     max-width: 500px;
+    flex: 1 0 auto;
+}
+
+.wrapper{
+    min-height: calc(100vh - 50vh);
 }
 
 /* * * * QUIZ BOX * * * */
@@ -99,7 +109,7 @@ label.answer [type=radio] + img {
     cursor: pointer;
 
     &:hover{
-        border: 2px groove $blue;
+        border: 3px groove $earthToneYellow;
     }
 }
 
@@ -120,13 +130,13 @@ label.answer input[type="radio"]:checked + img{
 }
 
 /* * * * BUTTONS * * * */
-.controls{
+.controls, .redoQuiz{
     @include flexy(flex, row wrap, space-between, center);
     width: 100%;
     margin-bottom: 5%;
 }
 
-.controls button{
+.controls button, .redoQuiz button{
     width: 100%;
     padding: 2% 0;
     background-color: $green;
@@ -149,3 +159,19 @@ label.answer input[type="radio"]:checked + img{
 button:focus-within{
     box-shadow: inset 0 1px 10px $earthToneYellow;
 }
+
+.redoQuiz{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .content-wrapper {
+    padding: 0 3%;
+  }
+
+  footer{
+      height: 10%;
+  }
+}
+
+
