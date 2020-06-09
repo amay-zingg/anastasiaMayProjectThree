@@ -77,38 +77,56 @@ h2{
 }
 
 /* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
-form.quizChoicesOne, .dogBreedResult{
+form.quizChoicesOne, form.quizChoicesTwo, form.quizChoicesThree, form.quizChoicesFour, .dogBreedResult{
   	position: relative;
     box-shadow: 0 1px 5px $neonGreen;
 }
 
-form.quizChoicesOne::before, form.quizChoicesOne::after, .dogBreedResult::before, .dogBreedResult::after{
+form.quizChoicesOne::before, form.quizChoicesOne::after, form.quizChoicesTwo::before, form.quizChoicesTwo::after, form.quizChoicesOne::after, form.quizChoicesThree::before, form.quizChoicesThree::after, form.quizChoicesFour::before, form.quizChoicesFour::after, .dogBreedResult::before .dogBreedResult::after{
 	content: "";
     position: absolute;
-    z-index: -1;
     box-shadow: 0 0 20px $neonGreen;
     top: 10px;
     bottom: 10px;
+    z-index: -10;
+    animation: fadeIn ease 4s;
     left: 0;
     right: 0;
     border-radius: 100px / 10px;
 }
 
-form.quizChoicesOne::after, .dogBreedResult::after{
+form.quizChoicesOne::before, form.quizChoicesTwo::before, form.quizChoicesThree::before, form.quizChoicesFour::before, .dogBreedResult::before{
+    left: 0;
+    right: 0;
+    border-radius: 100px / 10px;
+}
+
+form.quizChoicesOne::after, form.quizChoicesTwo::after, form.quizChoicesThree::after, form.quizChoicesFour::after, .dogBreedResult::after{
 	right: 10px;
     left: auto;
-    transform:skew(8deg) rotate(20deg);
-} /* * * * END OF BOX SHADOW EFFECT * * * */
+    transform: skew(8deg) rotate(20deg);
+    animation: fadeIn ease 4s;
+} 
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+
+/* * * * END OF BOX SHADOW EFFECT * * * */
 
 label.answer{
     width: 50%;
-    // padding: 2%;
 }
 
 label.answer [type=radio] + img {
     cursor: pointer;
 
     &:hover{
+        border: 3px groove $earthToneYellow;
+    }
+
+    &:active{
         border: 3px groove $earthToneYellow;
     }
 }
