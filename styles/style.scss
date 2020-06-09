@@ -10,7 +10,6 @@ $blue: #30F2F2;
 $white: #FFF;
 
 /* * * * BASICS * * * */
-
 body{
     background-color: $blueGreen;
     text-align: center;
@@ -25,8 +24,6 @@ h1{
 }
 
 footer{
-    background-color: $green;
-    color: $white;
     padding: 5px;
     height: 12%;
     flex-shrink: 0;
@@ -44,25 +41,18 @@ footer{
 }
 
 /* * * * QUIZ BOX * * * */
-
 .container, form, .dogBreedResult{
     @include flexy(flex, row wrap, center, center);
     width: 100%;
 }
 
-.quizContainer{
-    background-color: $blueGreen;
-}
-
 h2{
     width: 100%;
-    color: $white;
-    background-color: $green;
+    position: relative;
+    z-index: 10;
 }
 
 .dogBreedResult{
-    background: $green;
-    color: $white;
     margin-bottom: 5%;
 }
 
@@ -76,45 +66,16 @@ h2{
     margin: 0;
 }
 
-/* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
 form.quizChoicesOne, form.quizChoicesTwo, form.quizChoicesThree, form.quizChoicesFour, .dogBreedResult{
-  	position: relative;
-    box-shadow: 0 1px 5px $neonGreen;
+    box-shadow: 0 2px 20px $neonGreen;
 }
 
-form.quizChoicesOne::before, form.quizChoicesOne::after, form.quizChoicesTwo::before, form.quizChoicesTwo::after, form.quizChoicesOne::after, form.quizChoicesThree::before, form.quizChoicesThree::after, form.quizChoicesFour::before, form.quizChoicesFour::after, .dogBreedResult::before .dogBreedResult::after{
-	content: "";
-    position: absolute;
-    box-shadow: 0 0 20px $neonGreen;
-    top: 10px;
-    bottom: 10px;
-    z-index: -10;
-    animation: fadeIn ease 4s;
-    left: 0;
-    right: 0;
-    border-radius: 100px / 10px;
+h2, .dogBreedResult, .controls button, .redoQuiz button, footer /* DRY */{
+    background-color: $green;
+    color: $white;
 }
 
-form.quizChoicesOne::before, form.quizChoicesTwo::before, form.quizChoicesThree::before, form.quizChoicesFour::before, .dogBreedResult::before{
-    left: 0;
-    right: 0;
-    border-radius: 100px / 10px;
-}
-
-form.quizChoicesOne::after, form.quizChoicesTwo::after, form.quizChoicesThree::after, form.quizChoicesFour::after, .dogBreedResult::after{
-	right: 10px;
-    left: auto;
-    transform: skew(8deg) rotate(20deg);
-    animation: fadeIn ease 4s;
-} 
-
-@keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-
-/* * * * END OF BOX SHADOW EFFECT * * * */
-
+/* * * * PHOTO RADIO BUTTONS * * * */
 label.answer{
     width: 50%;
 }
@@ -142,12 +103,11 @@ label.answer input[type="radio"]:checked + img{
 }
 
 /* * * * QUIZ * * * */
-
-.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult{
+.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult, .redoQuiz{
     display: none;
 }
 
-/* * * * BUTTONS * * * */
+/* * * * CONTROL BUTTONS * * * */
 .controls, .redoQuiz{
     @include flexy(flex, row wrap, space-between, center);
     width: 100%;
@@ -157,13 +117,12 @@ label.answer input[type="radio"]:checked + img{
 .controls button, .redoQuiz button{
     width: 100%;
     padding: 2% 0;
-    background-color: $green;
     border: none;
-    color: $white;
 
     &:hover {
     background: $neonGreen radial-gradient(circle, transparent 1%, $neonGreen 1%) center/15000%;
     color: $green;
+    border: 1px solid $blue;
     }
     
     &:active {
@@ -171,6 +130,7 @@ label.answer input[type="radio"]:checked + img{
         background-size: 100%;
         transition: background 0s;
         color: $green;
+        border: 1px solid $blue;
     }
 }
 
@@ -178,10 +138,7 @@ button:focus-within{
     box-shadow: inset 0 1px 10px $earthToneYellow;
 }
 
-.redoQuiz{
-    display: none;
-}
-
+/* * * * RESPONSIVE STYLES * * * */
 @media screen and (max-width: 600px) {
   .content-wrapper {
     padding: 0 3%;

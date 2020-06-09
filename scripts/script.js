@@ -53,6 +53,7 @@ $(document).ready(function () {
             results.push(parseFloat(value));
         });
 
+        // * * * * QUESTION ONE - NEXT BUTTON
         $("button.firstNext").on("click", function () {
             const value = $('input:radio[name=firstAnswer]:checked').val();
 
@@ -82,6 +83,7 @@ $(document).ready(function () {
             $(".quizContainerThree").fadeIn(1000);
         });
         
+        // * * * * QUESTION TWO - NEXT BUTTON
         $("button.secondNext").on("click", function () {
             const value2 = $("input:radio[name=secondAnswer]:checked").val();
 
@@ -110,6 +112,7 @@ $(document).ready(function () {
             results.push(parseFloat(value3));
         });
 
+        // * * * * QUESTION THREE - NEXT BUTTON
         $("button.thirdNext").on("click", function () {
             const value3 = $("input:radio[name=thirdAnswer]:checked").val();
 
@@ -125,7 +128,7 @@ $(document).ready(function () {
             results.push(parseFloat(value3));
         });
 
-        // * * * * GO THROUGH QUESTIONS - QUESTION FOUR
+        // * * * * GO THROUGH QUESTIONS - QUESTION FOUR (BOTH DOUBLE CLICK AND RESULTS BUTTON)
         $(".quizChoicesFour img").on("dblclick", function() {
             const value4 = $("input:radio[name=fourthAnswer]:checked").val();
 
@@ -173,6 +176,7 @@ $(document).ready(function () {
 
         });
 
+        // * * * * QUESTION FOUR - RESULT BUTTON
         $("button.result").on("click", function () {
             const value4 = $("input:radio[name=fourthAnswer]:checked").val();
 

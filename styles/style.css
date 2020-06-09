@@ -316,8 +316,6 @@ h1 {
 }
 
 footer {
-  background-color: #1c784a;
-  color: #FFF;
   padding: 5px;
   height: 12%;
   -ms-flex-negative: 0;
@@ -355,19 +353,13 @@ footer {
   width: 100%;
 }
 
-.quizContainer {
-  background-color: #61F2C2;
-}
-
 h2 {
   width: 100%;
-  color: #FFF;
-  background-color: #1c784a;
+  position: relative;
+  z-index: 10;
 }
 
 .dogBreedResult {
-  background: #1c784a;
-  color: #FFF;
   margin-bottom: 5%;
 }
 
@@ -381,62 +373,17 @@ h2 {
   margin: 0;
 }
 
-/* * * * BOX SHADOW EFFECT BORROWED FROM https://codepen.io/haibnu/pen/FxGsI * * * */
 form.quizChoicesOne, form.quizChoicesTwo, form.quizChoicesThree, form.quizChoicesFour, .dogBreedResult {
-  position: relative;
-  -webkit-box-shadow: 0 1px 5px #bcf54c;
-          box-shadow: 0 1px 5px #bcf54c;
+  -webkit-box-shadow: 0 2px 20px #bcf54c;
+          box-shadow: 0 2px 20px #bcf54c;
 }
 
-form.quizChoicesOne::before, form.quizChoicesOne::after, form.quizChoicesTwo::before, form.quizChoicesTwo::after, form.quizChoicesOne::after, form.quizChoicesThree::before, form.quizChoicesThree::after, form.quizChoicesFour::before, form.quizChoicesFour::after, .dogBreedResult::before .dogBreedResult::after {
-  content: "";
-  position: absolute;
-  -webkit-box-shadow: 0 0 20px #bcf54c;
-          box-shadow: 0 0 20px #bcf54c;
-  top: 10px;
-  bottom: 10px;
-  z-index: -10;
-  -webkit-animation: fadeIn ease 4s;
-          animation: fadeIn ease 4s;
-  left: 0;
-  right: 0;
-  border-radius: 100px / 10px;
+h2, .dogBreedResult, .controls button, .redoQuiz button, footer {
+  background-color: #1c784a;
+  color: #FFF;
 }
 
-form.quizChoicesOne::before, form.quizChoicesTwo::before, form.quizChoicesThree::before, form.quizChoicesFour::before, .dogBreedResult::before {
-  left: 0;
-  right: 0;
-  border-radius: 100px / 10px;
-}
-
-form.quizChoicesOne::after, form.quizChoicesTwo::after, form.quizChoicesThree::after, form.quizChoicesFour::after, .dogBreedResult::after {
-  right: 10px;
-  left: auto;
-  -webkit-transform: skew(8deg) rotate(20deg);
-          transform: skew(8deg) rotate(20deg);
-  -webkit-animation: fadeIn ease 4s;
-          animation: fadeIn ease 4s;
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* * * * END OF BOX SHADOW EFFECT * * * */
+/* * * * PHOTO RADIO BUTTONS * * * */
 label.answer {
   width: 50%;
 }
@@ -464,11 +411,11 @@ label.answer input[type="radio"]:checked + img {
 }
 
 /* * * * QUIZ * * * */
-.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult {
+.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult, .redoQuiz {
   display: none;
 }
 
-/* * * * BUTTONS * * * */
+/* * * * CONTROL BUTTONS * * * */
 .controls, .redoQuiz {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -490,14 +437,13 @@ label.answer input[type="radio"]:checked + img {
 .controls button, .redoQuiz button {
   width: 100%;
   padding: 2% 0;
-  background-color: #1c784a;
   border: none;
-  color: #FFF;
 }
 
 .controls button:hover, .redoQuiz button:hover {
   background: #bcf54c radial-gradient(circle, transparent 1%, #bcf54c 1%) center/15000%;
   color: #1c784a;
+  border: 1px solid #30F2F2;
 }
 
 .controls button:active, .redoQuiz button:active {
@@ -506,6 +452,7 @@ label.answer input[type="radio"]:checked + img {
   -webkit-transition: background 0s;
   transition: background 0s;
   color: #1c784a;
+  border: 1px solid #30F2F2;
 }
 
 button:focus-within {
@@ -513,10 +460,7 @@ button:focus-within {
           box-shadow: inset 0 1px 10px #FFD97D;
 }
 
-.redoQuiz {
-  display: none;
-}
-
+/* * * * RESPONSIVE STYLES * * * */
 @media screen and (max-width: 600px) {
   .content-wrapper {
     padding: 0 3%;
