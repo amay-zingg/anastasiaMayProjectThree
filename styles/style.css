@@ -273,10 +273,10 @@ p a:hover, p a :active {
 }
 
 h1 {
-  font-size: clamp(4rem, 9vw, 8rem);
-  line-height: clamp(4rem, 9vw, 8rem)2px;
+  font-size: clamp(5rem, 9vw, 8rem);
+  line-height: clamp(5rem, 9vw, 8rem)2px;
   font-family: "Knewave", cursive;
-  line-height: clamp(5.5rem, 10vw, 10rem);
+  line-height: clamp(6.5rem, 10vw, 10rem);
   margin: 3% 0;
 }
 

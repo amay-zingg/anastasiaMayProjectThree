@@ -45,6 +45,10 @@ $(document).ready(function () {
         $(".quizChoicesOne img").on("dblclick", function() {
             const value = $('input:radio[name=firstAnswer]:checked').val();
 
+             // * * * * TO GO TO SECOND PAGE ON DOUBLE CLICK
+            $('.quizContainer').hide();
+            $(".quizContainerTwo").fadeIn(1000);
+
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value));
         });
@@ -55,22 +59,16 @@ $(document).ready(function () {
             if ($("input:radio[name=firstAnswer]:checked").length === 0) {
                 alert("You must pick one!");
                 return false;
+            } else {
+                 // * * * * TO GO TO SECOND PAGE 
+                $('.quizContainer').hide();
+                $(".quizContainerTwo").fadeIn(1000);
             };
 
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value));
         });
-
-        // * * * * TO GO TO SECOND PAGE
-        $(".quizChoicesOne img").on("dblclick", function () {
-            $('.quizContainer').hide();
-            $(".quizContainerTwo").fadeIn(1000);
-        });
-
-        $("button.firstNext").on("click", function () {
-            $('.quizContainer').hide();
-            $(".quizContainerTwo").fadeIn(1000);
-        });
+        
     
         // * * * * GO THROUGH QUESTIONS - QUESTION TWO
         $(".quizChoicesTwo img").on("dblclick", function () {
@@ -78,6 +76,10 @@ $(document).ready(function () {
 
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value2));
+
+            // * * * * TO GO TO THIRD PAGE ON DOUBLE CLICK
+            $('.quizContainerTwo').hide();
+            $(".quizContainerThree").fadeIn(1000);
         });
         
         $("button.secondNext").on("click", function () {
@@ -86,26 +88,23 @@ $(document).ready(function () {
             if ($("input:radio[name=secondAnswer]:checked").length === 0) {
                 alert("You must pick one!");
                 return false;
+            } else {
+                // * * * * TO GO TO THIRD PAGE
+                $('.quizContainerTwo').hide();
+                $(".quizContainerThree").fadeIn(1000);
             };
 
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value2));
         });
 
-        // * * * * TO GO TO THIRD PAGE
-        $(".quizChoicesTwo img").on("dblclick", function () {
-            $('.quizContainerTwo').hide();
-            $(".quizContainerThree").fadeIn(1000);
-        });
-
-        $("button.secondNext").on("click", function () {
-            $('.quizContainerTwo').hide();
-            $(".quizContainerThree").fadeIn(1000);
-        });
-
         // * * * * GO THROUGH QUESTIONS - QUESTION THREE
         $(".quizChoicesThree img").on("dblclick",function () {
             const value3 = $("input:radio[name=thirdAnswer]:checked").val();
+
+            // * * * * TO GO TO FOURTH PAGE ON DOUBLE CLICK
+            $('.quizContainerThree').hide();
+            $(".quizContainerFour").fadeIn(1000);
 
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value3));
@@ -117,24 +116,63 @@ $(document).ready(function () {
             if ($("input:radio[name=thirdAnswer]:checked").length === 0) {
                 alert("You must pick one!");
                 return false;
+            } else {
+                $('.quizContainerThree').hide();
+                $(".quizContainerFour").fadeIn(1000);
             };
 
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value3));
         });
 
-        // * * * * TO GO TO FOURTH PAGE
-        $(".quizChoicesThree img").on("dblclick", function () {
-            $('.quizContainerThree').hide();
-            $(".quizContainerFour").fadeIn(1000);
-        });
-
-        $("button.thirdNext").on("click", function () {
-            $('.quizContainerThree').hide();
-            $(".quizContainerFour").fadeIn(1000);
-        });
-
         // * * * * GO THROUGH QUESTIONS - QUESTION FOUR
+        $(".quizChoicesFour img").on("dblclick", function() {
+            const value4 = $("input:radio[name=fourthAnswer]:checked").val();
+
+            // * * * * RESULTS ARRAY
+            results.push(parseFloat(value4));
+
+            $('.quizContainerFour').hide();
+            $(".dogBreedResult").fadeIn(1000);
+
+            // * * * * MAKE 'RESULTS' ARRAY ALL ONE SUM
+            let totalResult = results.reduce((acc, cur) => {
+                return acc + cur;
+            });
+
+            // * * * * PICK DOG BREED BASED ON RESULTS
+            function showResult() {
+                if (totalResult >= 13, totalResult <= 16) {
+                    $('div.dogBreedResult').html(
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[0].id}!</h3><img src="${dogBreedsResult[0].img}" alt="A guilty golden retriever | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[0].result}</p>`)
+                    );
+                };
+                if (totalResult >= 11, totalResult <= 12) {
+                    $('div.dogBreedResult').html(
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[1].id}!</h3><img src="${dogBreedsResult[1].img}" alt="A guilty beagle | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[1].result}</p>`)
+                    );
+                };
+                if (totalResult >= 8, totalResult <= 10) {
+                    $('div.dogBreedResult').html(
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[2].id}!</h3><img src="${dogBreedsResult[2].img}" alt="A guilty dashchund | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[2].result}</p>`)
+                    );
+                };
+                if (totalResult <= 7) {
+                    $('div.dogBreedResult').html(
+                        $(`<h3>Congrats! You are a ${dogBreedsResult[3].id}!</h3><img src="${dogBreedsResult[3].img}" alt="A guilty pug | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[3].result}</p>`)
+                    );
+                };
+
+                $(".redoQuiz").fadeIn(2000);
+                $("input[type=reset]").on("click", function () {
+                    window.location.reload()
+                });
+            };
+
+            showResult();
+
+        });
+
         $("button.result").on("click", function () {
             const value4 = $("input:radio[name=fourthAnswer]:checked").val();
 
@@ -146,25 +184,9 @@ $(document).ready(function () {
             // * * * * RESULTS ARRAY
             results.push(parseFloat(value4));
 
-            // * * * * CAN'T FIGURE OUT WHY THE DOUBLE CLICK DOESN'T WORK FOR THE RESULT
-            // $(".quizChoicesFour img").on("dblclick", function () {
-            //     const value4 = $("input:radio[name=fourthAnswer]:checked").val();
-
-            //     // * * * * RESULTS ARRAY
-            //     results.push(parseFloat(value4));
-
-            //     $('.quizContainerFour').hide();
-            //     $(".dogBreedResult").fadeIn(1000);
-            //     console.log("DO I WORK");
-            // });
-
             // * * * * ON CLICK OF RESULT OPEN RESULTS CONTAINER
             $('.quizContainerFour').hide();
-            $(".dogBreedResult").show();
-            $(".redoQuiz").fadeIn(2000);
-            $("input[type=reset]").on("click", function () {
-                window.location.reload()
-            });
+            $(".dogBreedResult").fadeIn(1000);
 
             // * * * * MAKE 'RESULTS' ARRAY ALL ONE SUM
             let totalResult = results.reduce((acc, cur) => {
@@ -173,33 +195,39 @@ $(document).ready(function () {
 
             // * * * * PICK DOG BREED BASED ON RESULTS
             function showResult() {
-                if (totalResult >= 14, totalResult <= 16) {
+                if (totalResult >= 13, totalResult <= 16) {
                     $('div.dogBreedResult').html(
                         $(`<h3>Congrats! You are a ${dogBreedsResult[0].id}!</h3><img src="${dogBreedsResult[0].img}" alt="A guilty golden retriever | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[0].result}</p>`)
                     );
                 };
-                if (totalResult >= 10, totalResult <= 12) {
+                if (totalResult >= 11, totalResult <= 12) {
                     $('div.dogBreedResult').html(
                         $(`<h3>Congrats! You are a ${dogBreedsResult[1].id}!</h3><img src="${dogBreedsResult[1].img}" alt="A guilty beagle | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[1].result}</p>`)
                     );
                 };
-                if (totalResult >= 6, totalResult <= 9) {
+                if (totalResult >= 8, totalResult <= 10) {
                     $('div.dogBreedResult').html(
                         $(`<h3>Congrats! You are a ${dogBreedsResult[2].id}!</h3><img src="${dogBreedsResult[2].img}" alt="A guilty dashchund | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[2].result}</p>`)
                     );
                 };
-                if (totalResult <= 5) {
+                if (totalResult <= 7) {
                     $('div.dogBreedResult').html(
                         $(`<h3>Congrats! You are a ${dogBreedsResult[3].id}!</h3><img src="${dogBreedsResult[3].img}" alt="A guilty pug | Photo from www.dogshaming.com"><p class="result">${dogBreedsResult[3].result}</p>`)
                     );
                 };
+
+                $(".redoQuiz").fadeIn(2000);
+                $("input[type=reset]").on("click", function () {
+                    window.location.reload()
+                });
             };
 
             showResult();
 
         });
 
-        };
+        }; // * * * *  END OF RESULTS INIT
+       
         
     $(function () {
         results.init();

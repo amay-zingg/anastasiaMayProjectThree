@@ -22,9 +22,9 @@ p a{
 }
 
 h1{
-    @include fontSize(clamp(4rem, 9vw, 8rem));
+    @include fontSize(clamp(5rem, 9vw, 8rem));
     font-family: $titleFont;
-    line-height: clamp(5.5rem, 10vw, 10rem);
+    line-height: clamp(6.5rem, 10vw, 10rem);
     margin: 3% 0;
 }
 
