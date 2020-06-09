@@ -102,11 +102,6 @@ label.answer input[type="radio"]:checked + img{
     border: 2px groove $neonGreen;
 }
 
-/* * * * QUIZ * * * */
-.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult, .redoQuiz{
-    display: none;
-}
-
 /* * * * CONTROL BUTTONS * * * */
 .controls, .redoQuiz{
     @include flexy(flex, row wrap, space-between, center);
@@ -136,6 +131,11 @@ label.answer input[type="radio"]:checked + img{
 
 button:focus-within{
     box-shadow: inset 0 1px 10px $earthToneYellow;
+}
+
+/* * * * QUIZ * * * */
+.quizContainerTwo, .quizContainerThree, .quizContainerFour, .dogBreedResult, .redoQuiz{
+    display: none;
 }
 
 /* * * * RESPONSIVE STYLES * * * */
